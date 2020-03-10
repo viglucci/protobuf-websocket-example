@@ -1,0 +1,32 @@
+version: "3"
+services:
+    server_http:
+        build:
+            context: ./server-http
+            dockerfile: Dockerfile
+        volumes:
+            - ./server-http:/usr/src/app
+            - ./shared/generated:/usr/src/app/generated
+        ports:
+            - "${SERVER_HTTP_PUBLIC_PORT}:${SERVER_HTTP_PORT}"
+        networks:
+            - protobuf_websocket_example_net
+        env_file:
+            - .env
+    server_websocket:
+        build:
+            context: ./server-websocket
+            dockerfile: Dockerfile
+        ports:
+            - "${SERVER_WEBSOCKET_PUBLIC_PORT}:${SERVER_WEBSOCKET_PORT}"
+        volumes:
+            - ./server-websocket:/usr/src/app
+            - ./shared/generated:/usr/src/app/generated
+        networks:
+            - protobuf_websocket_example_net
+        env_file:
+            - .env
+
+networks:
+    protobuf_websocket_example_net:
+        driver: bridge

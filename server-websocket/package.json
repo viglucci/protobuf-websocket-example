@@ -1,0 +1,30 @@
+{
+    "name": "server-websocket",
+    "version": "0.1.0",
+    "description": "",
+    "main": "server.js",
+    "private": true,
+    "scripts": {
+        "start": "node server.js",
+        "dev": "nodemon -L server.js --config nodemon.json"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/viglucci/protobuf-websocket-example.git"
+    },
+    "author": "viglucci <kviglucci@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/viglucci/protobuf-websocket-example/issues"
+    },
+    "homepage": "https://github.com/viglucci/protobuf-websocket-example#readme",
+    "dependencies": {
+        "awilix": "^4.2.5",
+        "console-stamp": "^0.2.9",
+        "google-protobuf": "^3.11.2",
+        "morgan": "^1.9.1",
+        "nodemon": "^2.0.2",
+        "throng": "^4.0.0",
+        "ws": "^7.2.1"
+    }
+}

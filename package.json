@@ -1,0 +1,40 @@
+{
+    "name": "protobuf-websocket-example",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build:proto": "node ./scripts/gen-proto.js Messages"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/viglucci/protobuf-websocket-example.git"
+    },
+    "author": "viglucci <kviglucci@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/viglucci/protobuf-websocket-example/issues"
+    },
+    "homepage": "https://github.com/viglucci/protobuf-websocket-example#readme",
+    "dependencies": {
+        "console-stamp": "^0.2.9",
+        "fs-jetpack": "^2.2.3",
+        "google-protobuf": "^3.11.2",
+        "shelljs": "^0.8.3",
+        "yargs": "^15.0.2"
+    },
+    "devDependencies": {
+        "babel-eslint": "^10.0.3",
+        "eslint": "^6.8.0",
+        "eslint-config-airbnb": "^18.0.1",
+        "eslint-config-prettier": "^6.9.0",
+        "eslint-plugin-editorconfig": "^2.1.2",
+        "eslint-plugin-import": "^2.18.2",
+        "eslint-plugin-jsx-a11y": "^6.2.3",
+        "eslint-plugin-prettier": "^3.1.2",
+        "eslint-plugin-react": "^7.18.0",
+        "eslint-plugin-react-hooks": "^1.7.0",
+        "prettier": "^1.19.1"
+    }
+}
