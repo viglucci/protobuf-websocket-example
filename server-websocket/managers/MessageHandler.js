@@ -17,7 +17,7 @@ class MessageHandler {
             console.log(`No handler registered for packet with id "${packetId}"`);
             return;
         }
-        handler(sock, packet);
+        handler(sock, packet.getPayload());
     }
 }
 

@@ -1,12 +1,4 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import App from './App.jsx';
-
-// const mount = document.querySelector('#app-mount');
-
-// ReactDOM.render(<App />, mount);
-
-import { Packet, HelloRequest } from "../../generated/protobuf/Messages_pb";
+import { Packet, HelloRequest, HelloResponse } from "../../generated/protobuf/Messages_pb";
 
 const socket = new WebSocket(`ws://localhost:${process.env.SERVER_WEBSOCKET_PUBLIC_PORT}`);
 
@@ -26,10 +18,40 @@ const sendPong = () => {
     socket.send(serialized.buffer);
 };
 
+const sendHello = () => {
+    const packet = new Packet();
+    packet.setId("HelloRequest");
+
+    const payload = new HelloRequest();
+
+    payload.setName("John Doe");
+
+    packet.setPayload(payload.serializeBinary());
+
+    const serialized = packet.serializeBinary();
+    socket.send(serialized.buffer);
+};
+
+const handleHelloResponse = (packet) => {
+    const payload = packet.getPayload();
+    const response = HelloResponse.deserializeBinary(payload);
+    console.log(response.getMessage());
+};
+
 socket.onopen = function () {
     console.log("[open] Connection established");
     heartbeat();
+    sendHello();
 };
+
+const messageHandlers = new Map();
+messageHandlers.set("ping", () => {
+    sendPong();
+    heartbeat();
+});
+messageHandlers.set("HelloResponse", (packet) => {
+    handleHelloResponse(packet);
+});
 
 socket.onmessage = async function (event) {
     const { data } = event;
@@ -37,10 +59,9 @@ socket.onmessage = async function (event) {
     const packet = Packet.deserializeBinary(buffer);
     const packetId = packet.getId();
     console.log(`Received message with id "${packetId}"`);
-    if (packetId === "ping") {
-        sendPong();
-        heartbeat();
-        return;
+    const handler = messageHandlers.get(packetId);
+    if (handler) {
+        handler(packet);
     }
 };
 
