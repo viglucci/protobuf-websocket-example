@@ -27,6 +27,6 @@ throng({
 
         bindRoutes(container);
 
-        container.resolve("connectionManager").startHeartBeat();
+        container.resolve("connectionManager").startHeartbeat();
     }
 });

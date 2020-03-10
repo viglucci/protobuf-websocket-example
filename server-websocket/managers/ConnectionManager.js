@@ -28,7 +28,7 @@ class ConnectionManager {
         sock.send(bytes);
     }
 
-    startHeartBeat() {
+    startHeartbeat() {
         const interval = setInterval(() => {
             this.webSocketServer.clients.forEach(function each(sock) {
                 if (sock.isAlive === false) {
