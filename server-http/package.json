@@ -26,7 +26,7 @@
     "nodemon": "^2.0.2",
     "pug": "^2.0.4",
     "throng": "^4.0.0",
-    "ws": "^7.2.3"
+    "ws": "^7.4.6"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",
