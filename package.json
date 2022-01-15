@@ -21,7 +21,7 @@
         "console-stamp": "^0.2.9",
         "fs-jetpack": "^2.2.3",
         "google-protobuf": "^3.11.2",
-        "shelljs": "^0.8.3",
+        "shelljs": "^0.8.5",
         "yargs": "^15.0.2"
     },
     "devDependencies": {
